@@ -24,7 +24,9 @@ public class SecurityConfig {
                 .requestMatchers(
                     "/api/usuarios/login",
                     "/api/usuarios",
-                    "/api/usuarios/borrar-todo"
+                    "/api/usuarios/borrar-todo",
+                    "/api/productos",
+                    "/api/productos/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
