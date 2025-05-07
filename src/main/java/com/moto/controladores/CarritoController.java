@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
 @RestController
@@ -73,6 +74,7 @@ public class CarritoController {
     }
 
     // Vaciar el carrito
+    @Transactional
     @DeleteMapping("/productos")
     public ResponseEntity<?> vaciarCarrito(HttpServletRequest request) {
         Cliente cliente = getClienteFromToken(request);
@@ -88,6 +90,7 @@ public class CarritoController {
     }
 
     // Simular pago y vaciar carrito
+    @Transactional
     @PostMapping("/pagar")
     public ResponseEntity<?> pagar(HttpServletRequest request) {
         Cliente cliente = getClienteFromToken(request);
